@@ -9,15 +9,18 @@ const typeDefs = gql`
 
   # This "Book" type defines the queryable fields for every book in our data source.
   type User {
-    id: ID
+    id: String
     firstName: String
     age: Int
+    companyId: String
+    company: Company
   }
 
   type Company {
-      id: ID
+      id: String
       name: String
       description: String
+      users: [User]
   }
 
   # The "Query" type is special: it lists all of the available queries that
@@ -25,7 +28,7 @@ const typeDefs = gql`
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     users: [User]
-    companies: [Company]
+    companies: [Company],
   }
 `;
 
